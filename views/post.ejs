@@ -1,0 +1,84 @@
+<%- include("partials/header.ejs") %>
+    <!-- Header Image -->
+    <div class="mb-n5"
+        style="height: 60vh; background-image: url('/uploads/<%= post.coverImage ? post.coverImage.filename : 'default-image.png' %>'); background-size: cover; background-position: center;">
+    </div>
+
+    <!-- Content -->
+    <div class="container" style="max-width: 1100px;">
+        <article>
+            <!-- Book info -->
+            <div class="card border-light shadow-lg p-5">
+                <div class="card-body py-0 d-grid gap-3">
+                    <div class="row d-flex">
+                        <div class="col-auto">
+                            <button onclick="history.back()" class="btn btn-light">
+                                <i class="bi bi-arrow-left"></i>&nbsp;&nbsp;Back
+                            </button>
+                        </div>
+                        <div class="col-auto">
+                            <a href="/editor/<%= post.id %>" class="btn btn-light">
+                                <i class="bi bi-pencil-square"></i>&nbsp;&nbsp;Edit
+                            </a>
+                        </div>
+                        <div class="col-auto">
+                            <a href="/books/<%= post.id %>/delete" class="btn btn-outline-danger"
+                                onclick="return confirm('Are you sure you want to delete this post?');">
+                                <i class="bi bi-trash3"></i>&nbsp;&nbsp;Delete
+                            </a>
+                        </div>
+                    </div>
+                    <div class="row d-flex">
+                        <div class="col-auto">
+                            <% if (post.genre && post.genre.length> 0) { %>
+                                <% post.genre.forEach(genre=> { %>
+                                    <span class="badge">
+                                        <%= genre %>
+                                    </span>
+                                    <% }); %>
+                                <% } %>
+                        </div>
+                        <div class="col-auto">
+                            <span>
+                                <% for(stars=0; stars < parseInt(post.rating); stars++) { %>
+                                    <i class="bi bi-star-fill"></i>
+                                    <% } %>
+                                        <% for(stars=5; stars> parseInt(post.rating); stars--) { %>
+                                            <i class="bi bi-star"></i>
+                                            <% } %>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="col-auto">
+                        <h1>
+                            <%= post.bookTitle %>
+                        </h1>
+                    </div>
+                    <div class="col-auto">
+                        <p class="h3 text-body-secondary">
+                            Author: <%= post.author %>
+                        </p>
+                    </div>
+                    <div class="row text-body-secondary gx-5">
+                        <small class="col-auto">
+                            <i class="bi bi-person"></i>
+                            &nbsp;&nbsp;Posted by <%= post.name %>
+                        </small>
+                        <small class="col-auto">
+                            <i class="bi bi-calendar4"></i>
+                            &nbsp;&nbsp;<%= post.date.toLocaleDateString() %>
+                        </small>
+                    </div>
+                </div>
+            </div>
+            <div class="card border-light shadow-lg p-5 my-5">
+                <div class="card-body">
+                    <h2>Full review</h2>
+                    <hr class="my-4">
+                    <p><%- post.review.replace(/\r\n/g, '<br>' ) %></p>
+                </div>
+            </div>
+        </article>
+    </div>
+
+    <%- include("partials/footer.ejs") %>

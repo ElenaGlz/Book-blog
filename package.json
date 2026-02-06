@@ -1,0 +1,19 @@
+{
+  "name": "book-blog",
+  "version": "1.0.0",
+  "description": "Book reviews blog",
+  "license": "ISC",
+  "author": "Elena",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "bootstrap-icons": "^1.13.1",
+    "ejs": "^4.0.1",
+    "express": "^5.2.1",
+    "multer": "^2.0.2",
+    "path": "^0.12.7"
+  }
+}
