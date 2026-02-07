@@ -1,0 +1,102 @@
+@import url('https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css');
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap');
+
+:root {
+    --primary-color: #030213;
+    --light-grey: #ececec;
+    --bs-secondary-color: #777777;
+    --bs-light-border-subtle: #dedede;
+    --font-size: 16px;
+    --font-primary: 'Josefin Sans', Tahoma, Geneva, Verdana, sans-serif;
+    --font-contrast: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;    
+    --bs-border-radius: 0.6rem;
+}
+
+.content {
+    margin: 0 10px;
+}
+
+/* Fonts */
+body {
+    font-family: var(--font-primary);
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-weight: 700;
+    letter-spacing: -0.05rem;
+}
+
+h1 {
+    font-size: calc(var(--font-size) * 4);
+}
+
+/* Button styles */
+
+.btn-light {
+    background: none;
+    border: none;
+    color: #000;
+}
+.btn-light:hover {
+    background: var(--light-grey);
+}
+
+/* Navbar styles */
+
+.menu {
+    display: inline-flex;
+    justify-content: space-between;
+    gap: 2rem;
+    height: 3rem;
+}
+
+#navBar a {
+    color: black;
+    text-decoration: none;
+    font-family: var(--font-primary);
+    font-weight: 700;
+}
+
+/* Card styles */
+.badge {
+    background-color: var(--light-grey);
+    color: #4f4f4f;
+    font-weight: 400;
+    font-size: 14px;
+    padding-top: 0.45rem;
+}
+
+.bi-star {
+    color: #b37900;
+}
+.bi-star-fill {
+    color: #fead00;
+}
+
+.card-footer {
+    background: none !important;
+    font-size: 13px;
+}
+
+/* Form styles */
+.form-control {
+    background-color: var(--light-grey);
+}
+.form-control:focus {
+    border-color: var(--secondary-color);
+    background-color: var(--light-grey);
+    box-shadow: 0 0 0 0.2rem rgba(3, 2, 19, 0.2);
+}
+#multiSelectDropdown {
+    background-color: var(--light-grey);
+    border: 1px solid var(--bs-light-border-subtle);
+    color: var(--primary-color)
+}
+
+/* Other classes */
+.mb-n5 {
+    margin-bottom: -5rem;
+}

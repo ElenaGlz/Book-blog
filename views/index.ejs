@@ -1,0 +1,68 @@
+<%- include("partials/header.ejs") %>
+
+    <div class="content mt-5 pt-5 mb-5">
+        <div class="text-center mb-5">
+            <h1>BookReviews & Literary insights</h1>
+            <p class="lead mx-auto" style="max-width: 600px;">Exploring the world of books, one at a time. Share and
+                discover in-depth reviews and passionate recommendations.</p>
+        </div>
+
+        <% if (posts.length> 0) { %>
+            <div class="posts-list row row-cols-1 row-cols-md-2 row-cols-lg-3 m-5">
+                <% posts.forEach(post=> { %>
+                    <div class="p-4">
+                        <div class="card h-100 px-0">
+                            <div class=" ratio ratio-1x1"><img
+                                    src="uploads/<%= post.coverImage ? post.coverImage.filename : 'default-image.png' %>"
+                                    class="card-img-top object-fit-cover" alt="Cover for the book <%= post.bookTitle %>"
+                                    style="background-color: black;">
+                            </div>
+                            <div class="card-body align-items-end">
+                                <p class="card-text d-flex justify-content-start align-items-center gap-4">
+                                    <% if (post.genre && post.genre.length > 0) { %>
+                                        <% post.genre.forEach(genre=> { %>
+                                            <span class="badge">
+                                                <%= genre %>
+                                            </span>
+                                        <% }); %>
+                                    <% } %>
+                                    <div class="ms-auto">
+                                        <% for(stars=0; stars < parseInt(post.rating); stars++) { %>
+                                            <i class="bi bi-star-fill"></i>
+                                        <% } %>
+                                        <% for(stars=5; stars> parseInt(post.rating); stars--) { %>
+                                            <i class="bi bi-star"></i>
+                                        <% } %>
+                                        </div>
+                                </p>
+                                <h3 class="card-title">
+                                    <a href="/books/<%= encodeURIComponent(post.bookTitle) %>"
+                                        class="stretched-link text-decoration-none text-reset">
+                                        <%= post.bookTitle %>
+                                    </a>
+                                </h3>
+                                <h4 class="card-subtitle mb-2 text-body-secondary fs-5">Author:
+                                    <%= post.author %>
+                                </h4>
+                                <p class="card-text mt-3 text-body-secondary">
+                                    <%= post.review.slice(0, 100) %> ...
+                                </p>
+                            </div>
+                            <div class="card-footer text-body-secondary d-flex gap-4">
+                                <p class="mb-0">Reviewed by <%= post.name %>
+                                </p>
+                                <p class="mb-0">
+                                    <i class="bi bi-calendar4"></i>&nbsp;&nbsp;<%= post.date.toLocaleDateString() %>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <% }); %>
+            </div>
+            <% } else { %>
+                <p>No reviews available.</p>
+                <% } %>
+
+    </div>
+
+    <%- include("partials/footer.ejs") %>
